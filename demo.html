@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<title>Crossbrowser jQuery placeholder</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h2>Placeholder that works in Internet explorer</h2>
+
+<input type="text" name="example-1" placeholder="Email Address" />
+
+<script>
+//placeholder for IE
+$(function () {
+    $(':input[placeholder]').each(function () {
+        var $this = $(this);
+        if ($this.val() === '') {
+            $this.val($this.attr('placeholder'));
+        }
+        $this.focus(function () {
+            if ($this.val() === $this.attr('placeholder')) {
+                $this.val('');
+            }
+        });
+        $this.blur(function () {
+            if ($this.val() === '') {
+                $this.val($this.attr('placeholder'));
+            }
+        });
+    });
+});
+
+</script>
+</body>
+
+</html>
